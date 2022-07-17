@@ -1,5 +1,6 @@
 from flask import Flask,send_from_directory
 from flask_sqlalchemy import SQLAlchemy
+import os
 #from flask_cors import CORS
 
 app = Flask(__name__,static_url_path="")
@@ -23,7 +24,7 @@ def static_file(path):
     return send_from_directory('../static',path)
 
 UPLOAD_FOLDER='d:/fitnesssolution/fitness-flask-app/static/uploads'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/fitness'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["DATABASE_URI"]
 app.config[' SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB max-limit.
