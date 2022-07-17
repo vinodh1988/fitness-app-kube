@@ -7,6 +7,7 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
+ENV DATABASE_URI="mysql://root:password@localhost/fitness"
 COPY . /app
 
 EXPOSE 5000
